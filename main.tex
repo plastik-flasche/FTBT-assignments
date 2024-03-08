@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 
-\usepackage{pdfpages}
+\usepackage{pdfpages} % for including pdfs
 \usepackage{tikzscale}
 \usepackage{indentfirst}
 \usepackage{amsmath}
@@ -8,6 +8,7 @@
 \usepackage{pgfplots}
 \usepackage[utf8]{inputenc}
 \usepackage{pgfplots}
+\usepackage{pdflscape} % for landscape
 
 
 \usetikzlibrary{arrows.meta}
@@ -46,6 +47,9 @@
 \title{FTBT Aufgabe}
 \author{Florian Schwarzl}
 \date{\today}
+
+% set margins to 2.5cm
+\usepackage[a4paper, margin=2.5cm]{geometry}
 
 \begin{document}
 
@@ -102,5 +106,21 @@ Der Sourcecode kann auf Github (https://github.com/plastik-flasche/FTBT-assignme
 \includegraphics[width=\textwidth, height=0.45\textheight]{line_d.tikz}
 
 \includepdf[pages=36-39]{western_electric_handbook.pdf}
+
+\section{Ü 5.9: Pareto-Analyse}
+
+\includegraphics[width=\textwidth, height=0.9\textheight]{pareto.tikz}
+
+\begin{landscape}
+	\section{Ü 5.10: Ishikawa-Diagramm}
+
+	Credit: https://github.com/JuGonz21/Fishbone
+
+	\begin{center}
+		\resizebox{\linewidth}{!}{% Resize to fit the width of the page
+			\input{ishikawa.pgf}
+		}
+	\end{center}
+\end{landscape}
 
 \end{document}

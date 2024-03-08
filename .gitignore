@@ -3,3 +3,4 @@ aux
 venv
 __pycache__
 *.tikz
+*.pgf
