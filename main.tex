@@ -1,0 +1,106 @@
+\documentclass[12pt]{article}
+
+\usepackage{pdfpages}
+\usepackage{tikzscale}
+\usepackage{indentfirst}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+
+
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{patterns,shapes.arrows}
+% \pgfplotsset{compat=newest,
+%     width=18cm,
+%     height=6cm,
+%     scale only axis=true,
+%     max space between ticks=25pt,
+%     try min ticks=5,
+%     every axis/.style={
+%         axis y line=left,
+%         axis x line=bottom,
+%         axis line style={thick,->,>=latex, shorten >=-.4cm}
+%     },
+%     every axis plot/.append style={thick},
+%     tick style={black, thick}
+% }
+% \tikzset{
+%     semithick/.style={line width=0.8pt},
+% }
+\usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{dateplot}
+\usepgfplotslibrary{groupplots,dateplot}
+\pgfplotsset{compat=newest}
+
+
+% \DeclareUnicodeCharacter{2212}{−}
+
+
+% \usepackage{tikz}
+% \usetikzlibrary{external}
+% \tikzexternalize[prefix=tikz/, shell escape=-shell-escape,optimize command away=\includepdf]
+
+
+\title{FTBT Aufgabe}
+\author{Florian Schwarzl}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\section{Warum ist das Dokument so lang?}
+
+Da ich zuerst nur die Aufgabenstellung in OneNote durchgelesen habe, habe ich die "Western Electric Rules" recherchiert und bin auf einige verschiedene Regeln gestoßen. Jede Quelle hatte andere Regeln, also ging ich auf die Suche nach der Originalquelle. Nach etwas weiterer Recherche ergab sich, dass die Regeln erstmals im Buch "Statistical Quality Control Handbook" von Western Electric Company veröffentlicht wurden. Nach ein paar weiteren Klicks fand ich das Buch auf documents.pub und konnte die Regeln nachlesen. Die Regeln sind in diesem Dokument bzw. im Buch (western\_electric\_handbook.pdf) von Seite(laut Buch) 25-28 zu finden. Nachdem der Python Code fast vollendet war und ich schon mit dem TeX Code angefangen habe, schaute ich mir die Angabe nochmal an. Da kein OneNote installiert war und ich nicht mit meinem Microsoft Account angemeldet war, suchte ich im Lehrbuch nach der Angabe, beim Durchblättern fiel mir auf, dass die Regeln, die wir anwenden sollen, eine Seite weiter vorne zu finden waren, und das diese eigentlich nicht die "Western Electric Rules" sind, sondern eine vereinfachte Version davon. Da ich schon fast fertig war, hab mich dafür entschieden, beides fertig zu stellen.
+
+\section{Wie wurde die Datei erstellt?}
+
+Alle Diagramme sind in Python mit matplotlib erstellt, mit tikzplotlib exportiert und in LaTeX eingebunden worden und komplett dynamisch. Wenn sich die Daten ändern, ändern sich auch die Diagramme. Die Fehler in den Diagrammen (in Rot markiert) sind auch dynamisch; Die Daten werden nach Fehlern ausgewertet. Wenn mindestens ein Fehler gefunden wird, wird das Diagramm mit "FAIL" markiert, ansonsten mit "PASS". Im Moment muss man die Daten direkt in den einzelnen .py Dateien ändern, doch Formate wie Excel oder .csv dafür zu verwenden ist mit pandas auch kein Problem.
+
+\section{Warum so kompliziert?}
+
+Sicher hätte man das ganze relativ schnell in Excel machen können, doch Features wie die automatische Fehlererkennung wären dort um ein vielfaches schwerer gewesen. Und außerdem, hab ich das so gemacht, weil ich Python und TeX lernen wollte, primär für die Diplomarbeit.
+
+\section{Was ich noch gerne gemacht hätte}
+
+Was ich nicht implementiert habe, sind Warnungen, also zum Beispiel wenn bis jetzt ein Punkt in Sektor B liegt, dann einer in A und 2 weitere in B, ist es nicht unwahrscheinlich, dass der nächste Punkt auch in B liegt, was zu einem Fehler führen würde. In diesem Fall sollte eine Warnung ausgegeben werden.
+
+\section{Kann ich das Dokument modifizieren?}
+
+Der Sourcecode kann auf Github (https://github.com/plastik-flasche/FTBT-assignments) eingesehen werden. Über meinen Username darf man sich nicht zu viele Gedanken machen, ich weiß selber nicht mehr, wie es dazu gekommen ist. Anleitungen zum kompilieren sind dort zu finden! Der Code mag zwar nicht der beste sein, aber das gehört zum Lernprozess dazu.
+
+\newpage
+
+\section{Ü 5.6: Datenvisualisierung mit Histogramm}
+
+\includegraphics[width=0.9\textwidth, height=0.46\textheight]{total_costs.tikz}
+
+\includegraphics[width=0.9\textwidth, height=0.46\textheight]{relative_frequency.tikz}
+
+\section{Ü 5.7: Fehleranalyse nach Lehrbuch}
+
+\includegraphics[width=\textwidth, height=0.45\textheight]{line_a_2.tikz}
+
+\includegraphics[width=\textwidth, height=0.45\textheight]{line_b_2.tikz}
+
+\includegraphics[width=\textwidth, height=0.45\textheight]{line_c_2.tikz}
+
+\includegraphics[width=\textwidth, height=0.45\textheight]{line_d_2.tikz}
+
+\section{Ü 5.7: Fehleranalyse nach originalem Western Electric Handbuch}
+
+\includegraphics[width=\textwidth, height=0.45\textheight]{line_a.tikz}
+
+\includegraphics[width=\textwidth, height=0.45\textheight]{line_b.tikz}
+
+\includegraphics[width=\textwidth, height=0.45\textheight]{line_c.tikz}
+
+\includegraphics[width=\textwidth, height=0.45\textheight]{line_d.tikz}
+
+\includepdf[pages=36-39]{western_electric_handbook.pdf}
+
+\end{document}

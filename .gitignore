@@ -1,0 +1,5 @@
+build
+aux
+venv
+__pycache__
+*.tikz

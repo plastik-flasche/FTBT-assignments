@@ -1,0 +1,22 @@
+{
+	"latex-workshop.latex.recipes": [
+		{
+			"name": "Make all",
+			"tools": [
+				"Make all"
+			]
+		}
+	],
+	"latex-workshop.latex.tools": [
+		{
+			"name": "Make all",
+			"command": "make",
+			"args": [
+				"all"
+			],
+			"env": {}
+		}
+	],
+	"latex-workshop.latex.recipe.default": "first", // or the name of your custom recipe
+	"latex-workshop.latex.outDir": "./build"
+}
