@@ -2,12 +2,12 @@
 
 categories = {
     'Mensch': ['Fingerabdrücke', 'Ungeschultes Personal'],
-    'Methode': ['Trocknungsdauer'],
-    'Messung': [],
-    'Material': ['Vorlage ist faltig', 'Tonerqualität schlecht', 'Papierdicke zu klein', 'Papiermaterial schlecht', 'Zu helle Farben'],
-    'Maschine': ['Lampe zu halt', 'Glasfläche verschmutzt', 'Aufheizung des Gerät', 'Fördergummiräder verschmutzt'],
+    'Methode': ['Trocknungsdauer', 'Glasfläche verschmutzt', 'Vorlage ist faltig'],
+    'Messung': ['Zu helle Farben'],
+    'Material': ['Tonerqualität schlecht', 'Papierdicke zu klein', 'Papiermaterial schlecht'],
+    'Maschine': ['Aufheizung des Gerät', 'Fördergummiräder verschmutzt'],
     'Milieu': ['Klimatisierung fehlt'],
-    'Management': ['Walzenrolle nicht gewartet', 'Wartungsintervalle zu groß']
+    'Management': ['Walzenrolle nicht gewartet', 'Wartungsintervalle zu groß', 'Lampe zu alt']
 }
 
 
