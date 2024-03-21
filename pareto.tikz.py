@@ -46,8 +46,8 @@ top_3_color = 'red'
 colors[:3] = [top_3_color] * 3
 plt.bar(df_sorted_by_relative_cost['Fehlerart'], df_sorted_by_relative_cost['Gesamtkosten'], color=colors)
 plt.plot(index, cumulative, color='black', marker='o')
-plt.title('Gesamtkosten der Fehlerarten')
-plt.ylabel('Gesamtkosten (Cent)')
+plt.title(f"Fehlerarten (Summenkosten: {sum/100}€)")
+plt.ylabel('Relative Kosten (%)')
 plt.xlabel('Fehlerart')
 plt.xticks(rotation=45, ha="right")
 plt.tight_layout()
