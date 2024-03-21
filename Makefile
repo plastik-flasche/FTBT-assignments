@@ -9,29 +9,33 @@ TIKZ_DIR = $(BUILD_DIR)/tikz
 
 ALL_PY = $(wildcard *.py)
 ALL_TIKZ_PY = $(wildcard *.tikz.py)
-ALL_TIKZ = $(ALL_TIKZ_PY:.tikz.py=.tikz)
+ALL_TIKZ = $(patsubst %.tikz.py,$(AUXDIR)/%.tikz,$(ALL_TIKZ_PY))
 ALL_PGF_PY = $(wildcard *.pgf.py)
 ALL_PGF = $(ALL_PGF_PY:.pgf.py=.pgf)
 
 all: $(BUILD_DIR)/main.pdf
 
-venv: $(VENV_SENTINEL)
-
 $(TIKZ_DIR):
 	mkdir -p $(TIKZ_DIR)
+
+$(AUXDIR):
+	mkdir -p $(AUXDIR)
+
+$(BUILD_DIR):
+	mkdir -p $(BUILD_DIR)
 
 $(VENV_SENTINEL): requirements.txt
 	test -d $(VENV_DIR) || python3 -m venv $(VENV_DIR)
 	$(PYTHON) -m pip install -Ur requirements.txt
 	touch $(VENV_SENTINEL)
 
-$(BUILD_DIR)/main.pdf: main.tex $(ALL_TIKZ) $(ALL_PGF) $(ALL_PY) $(VENV_SENTINEL) | $(TIKZ_DIR)
+$(BUILD_DIR)/main.pdf: main.tex $(ALL_TIKZ) $(ALL_PGF) $(ALL_PY) $(VENV_SENTINEL) | $(TIKZ_DIR) $(BUILD_DIR)
 	latexmk -pdf -pdflatex="pdflatex -interaction=nonstopmode" -shell-escape -halt-on-error -use-make -interaction=nonstopmode -synctex=1 -file-line-error -jobname=main -outdir=$(BUILD_DIR) -auxdir=$(AUXDIR) main.tex
 
-%.tikz: %.tikz.py venv
+$(AUXDIR)/%.tikz: %.tikz.py $(VENV_SENTINEL) | $(AUXDIR)
 	$(PYTHON) $< 1> $@ 2>&2 || (rm -f $@ && false)
 
-%.pgf: %.pgf.py venv
+%.pgf: %.pgf.py $(VENV_SENTINEL)
 	$(PYTHON) $<
 
 clean:
@@ -46,4 +50,4 @@ clean-venv:
 	-rm -f $(VENV_SENTINEL)
 	-rm -rf __pycache__
 
-.PHONY: clean clean-venv venv all
+.PHONY: clean clean-venv all
